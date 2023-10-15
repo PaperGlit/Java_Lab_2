@@ -1,8 +1,7 @@
 import java.util.Scanner;
+import java.util.Iterator;
 
-import static java.lang.Integer.parseInt;
-
-class Stack<T> {
+class Stack<T> implements Iterable<T> {
     static class Node<T> {
         T info;
         Node<T> next;
@@ -17,6 +16,27 @@ class Stack<T> {
 
     public Stack() {
         this.end = null;
+    }
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<>() {
+            private Node<T> current = end;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new java.util.NoSuchElementException();
+                }
+                T data = current.info;
+                current = current.next;
+                return data;
+            }
+        };
     }
 
     public void push(T info) {
@@ -34,30 +54,11 @@ class Stack<T> {
         end = end.next;
         return data;
     }
-
-    public int size() {
-        int count = 0;
-        Node<T> current = end;
-        while (current != null) {
-            count++;
-            current = current.next;
-        }
-        return count;
-    }
-
-    public void print() {
-        Node<T> current = end;
-        while (current != null) {
-            System.out.print(current.info + " ");
-            current = current.next;
-        }
-        System.out.println();
-    }
 }
 
 public class Task1 {
     public static void stack() {
-        Stack<Integer> stack = new Stack<>();
+        Stack<String> stack = new Stack<>();
         while (true) {
             System.out.print("1 - create a new stack, 2 - push, 3 - populate, 4 - print, 5 - size, anything else - exit: ");
             Scanner scan = new Scanner(System.in);
@@ -68,17 +69,24 @@ public class Task1 {
                     break;
                 case "2":
                     System.out.print("Enter an integer to push: ");
-                    int i = parseInt(scan.nextLine());
-                    stack.push(i);
+                    stack.push(scan.nextLine());
                     break;
                 case "3":
                     System.out.println("Populated integer: " + stack.pop());
                     break;
                 case "4":
-                    stack.print();
+                    for (String n : stack) {
+                        System.out.print(n + " ");
+                    }
+                    System.out.println();
                     break;
                 case "5":
-                    System.out.println("Size of the stack: " + stack.size());
+                    System.out.print("Size of the stack: ");
+                    int count = 0;
+                    for (String ignored : stack) {
+                        count++;
+                    }
+                    System.out.println(count);
                     break;
                 default:
                     return;

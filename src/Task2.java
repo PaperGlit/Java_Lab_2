@@ -1,14 +1,16 @@
 import java.util.Scanner;
 
-abstract class Shape {
-    public abstract double S();
+interface Shape {
+    default double S() {
+        return 0;
+    }
 }
-abstract class VShape extends Shape {
-    @Override
-    public abstract double S();
-    public abstract double V();
+interface VShape extends Shape {
+    default double V() {
+        return 0;
+    }
 }
-class Triangle extends Shape {
+class Triangle implements Shape {
     double a, b, c;
     public Triangle(double a, double b, double c) {
         this.a = a;
@@ -21,7 +23,7 @@ class Triangle extends Shape {
         return Math.sqrt(p * (p - a) * (p - b) * (p - c));
     }
 }
-class Rectangle extends Shape {
+class Rectangle implements Shape {
     double a, b;
     public Rectangle(double a, double b) {
         this.a = a;
@@ -32,7 +34,7 @@ class Rectangle extends Shape {
         return a * b;
     }
 }
-class Square extends Shape {
+class Square implements Shape {
     double a;
     public Square(double a) {
         this.a = a;
@@ -42,7 +44,7 @@ class Square extends Shape {
         return a * a;
     }
 }
-class Circle extends Shape {
+class Circle implements Shape {
     double a;
     public Circle(double a) {
         this.a = a;
@@ -52,7 +54,7 @@ class Circle extends Shape {
         return Math.PI * a * a;
     }
 }
-class Cube extends VShape {
+class Cube implements VShape {
     double a;
     public Cube(double a) {
         this.a = a;
@@ -66,7 +68,7 @@ class Cube extends VShape {
         return a * a * a;
     }
 }
-class Pyramid extends VShape {
+class Pyramid implements VShape {
     double a;
     public Pyramid(double a) {
         this.a = a;
@@ -80,7 +82,7 @@ class Pyramid extends VShape {
         return (1 / 3.0) * a * a * (1 / 2.0) * Math.sqrt(2);
     }
 }
-class Sphere extends VShape {
+class Sphere implements VShape {
     double a;
     public Sphere(double a) {
         this.a = a;
@@ -97,7 +99,7 @@ class Sphere extends VShape {
 public class Task2 {
     public static void shapes() {
         while (true) {
-            double a = 0, b = 0, c = 0;
+            double a, b, c;
             System.out.print("""
                     Select the desired shape:\s
                     1 - triangle, 2 - rectangle, 3 - square, 4 - circle,\s
