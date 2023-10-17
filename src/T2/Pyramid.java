@@ -20,7 +20,8 @@ public class Pyramid implements VShape {
     @Override
     public double S() {
         if (c != 0) {
-            Triangle t = new Triangle(a, b ,c);
+            Triangle t = Triangle.create(a, b, c);
+            if (t == null) return - 1;
             double S = t.S();
             double p = (a + b + c) * 0.5;
             double r = S / p;
@@ -33,7 +34,8 @@ public class Pyramid implements VShape {
     @Override
     public double V() {
         if (c != 0) {
-            Triangle t = new Triangle(a, b, c);
+            Triangle t = Triangle.create(a, b, c);
+            if (t == null) return - 1;
             return (1 / 3.0 * h * t.S());
         }
         else return (1 / 3.0 * h * a * b);

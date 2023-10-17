@@ -22,6 +22,7 @@ public class Task1 {
                     System.out.println("Populated value: " + stack.pop());
                     break;
                 case "4":
+                    System.out.print("Stored values: ");
                     for (String n : stack) {
                         System.out.print(n + " ");
                     }

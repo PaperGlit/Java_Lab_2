@@ -9,6 +9,14 @@ public class Triangle implements Shape {
         this.c = c;
     }
 
+    public static Triangle create(double a, double b, double c) {
+        if (a + b < c || b + c < a || c + a < b) {
+            System.out.println("Error: this triangle cannot exist");
+            return null;
+        }
+        return new Triangle(a, b, c);
+    }
+
     @Override
     public double S() {
         double p = (a + b + c) / 2.0;
