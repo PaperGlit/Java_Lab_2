@@ -1,105 +1,11 @@
+import T2.*;
+
 import java.util.Scanner;
 
-interface Shape {
-    default double S() {
-        return 0;
-    }
-}
-interface VShape extends Shape {
-    default double V() {
-        return 0;
-    }
-}
-class Triangle implements Shape {
-    double a, b, c;
-    public Triangle(double a, double b, double c) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
-    }
-    @Override
-    public double S(){
-        double p = (a + b + c) / 2.0;
-        return Math.sqrt(p * (p - a) * (p - b) * (p - c));
-    }
-}
-class Rectangle implements Shape {
-    double a, b;
-    public Rectangle(double a, double b) {
-        this.a = a;
-        this.b = b;
-    }
-    @Override
-    public double S() {
-        return a * b;
-    }
-}
-class Square implements Shape {
-    double a;
-    public Square(double a) {
-        this.a = a;
-    }
-    @Override
-    public double S() {
-        return a * a;
-    }
-}
-class Circle implements Shape {
-    double a;
-    public Circle(double a) {
-        this.a = a;
-    }
-    @Override
-    public double S() {
-        return Math.PI * a * a;
-    }
-}
-class Cube implements VShape {
-    double a;
-    public Cube(double a) {
-        this.a = a;
-    }
-    @Override
-    public double S() {
-        return 6 * a * a;
-    }
-    @Override
-    public double V() {
-        return a * a * a;
-    }
-}
-class Pyramid implements VShape {
-    double a;
-    public Pyramid(double a) {
-        this.a = a;
-    }
-    @Override
-    public double S() {
-        return (a * a) + (4 * ((Math.sqrt(3)/4)) * a * a);
-    }
-    @Override
-    public double V() {
-        return (1 / 3.0) * a * a * (1 / 2.0) * Math.sqrt(2);
-    }
-}
-class Sphere implements VShape {
-    double a;
-    public Sphere(double a) {
-        this.a = a;
-    }
-    @Override
-    public double S() {
-        return 4 * Math.PI * a * a;
-    }
-    @Override
-    public double V(){
-        return 4 / 3.0 * Math.PI * a * a * a;
-    }
-}
 public class Task2 {
     public static void shapes() {
         while (true) {
-            double a, b, c;
+            double a, b, c, h;
             System.out.print("""
                     Select the desired shape:\s
                     1 - triangle, 2 - rectangle, 3 - square, 4 - circle,\s
@@ -110,49 +16,90 @@ public class Task2 {
             switch (k) {
                 case "1":
                  System.out.print("Enter the triangle's value #1: ");
-                    a = Double.parseDouble(scan.nextLine());
+                    a = Shape.parser(scan.nextLine());
+                    if (a == -1) break;
                     System.out.print("Enter the triangle's value #2: ");
-                    b = Double.parseDouble(scan.nextLine());
+                    b = Shape.parser(scan.nextLine());
+                    if (b == -1) break;
                     System.out.print("Enter the triangle's value #3: ");
-                    c = Double.parseDouble(scan.nextLine());
+                    c = Shape.parser(scan.nextLine());
+                    if (c == -1) break;
                     Triangle t = new Triangle(a, b, c);
                     System.out.println("Area: " + t.S());
                     break;
                 case "2":
                     System.out.print("Enter the rectangle's value #1: ");
-                    a = Double.parseDouble(scan.nextLine());
+                    a = Shape.parser(scan.nextLine());
+                    if (a == -1) break;
                     System.out.print("Enter the rectangle's value #2: ");
-                    b = Double.parseDouble(scan.nextLine());
+                    b = Shape.parser(scan.nextLine());
+                    if (b == -1) break;
                     Rectangle r = new Rectangle(a, b);
                     System.out.println("Area: " + r.S());
                     break;
                 case "3":
                     System.out.print("Enter the square's value: ");
-                    a = Double.parseDouble(scan.nextLine());
+                    a = Shape.parser(scan.nextLine());
+                    if (a == -1) break;
                     Square s = new Square(a);
                     System.out.println("Area: " + s.S());
                     break;
                 case "4":
                     System.out.print("Enter the circle's value: ");
-                    a = Double.parseDouble(scan.nextLine());
+                    a = Shape.parser(scan.nextLine());
+                    if (a == -1) break;
                     Circle cl = new Circle(a);
                     System.out.println("Area: " + cl.S());
                     break;
                 case "5":
                     System.out.print("Enter the cube's value: ");
-                    a = Double.parseDouble(scan.nextLine());
+                    a = Shape.parser(scan.nextLine());
+                    if (a == -1) break;
                     Cube cb = new Cube(a);
                     System.out.println("Area: " + cb.S() + "\nVolume: " + cb.V());
                     break;
                 case "6":
-                    System.out.print("Enter the pyramid's value: ");
-                    a = Double.parseDouble(scan.nextLine());
-                    Pyramid p = new Pyramid(a);
-                    System.out.println("Area: " + p.S() + "\nVolume: " + p.V());
+                    System.out.print("1 - Triangular pyramid, 2 - Rectangular pyramid, anything else - return: ");
+                    k = scan.nextLine();
+                    Pyramid pm;
+                    switch (k) {
+                        case "1":
+                            System.out.print("Enter the pyramid's base length #1: ");
+                            a = Shape.parser(scan.nextLine());
+                            if (a == -1) break;
+                            System.out.print("Enter the pyramid's base length #2: ");
+                            b = Shape.parser(scan.nextLine());
+                            if (b == -1) break;
+                            System.out.print("Enter the pyramid's base length #3: ");
+                            c = Shape.parser(scan.nextLine());
+                            if (c == -1) break;
+                            System.out.print("Enter the pyramid's height: ");
+                            h = Shape.parser(scan.nextLine());
+                            if (h == -1) break;
+                            pm = new Pyramid(a, b, c, h);
+                            System.out.println("Area: " + pm.S() + "\nVolume: " + pm.V());
+                            break;
+                        case "2":
+                            System.out.print("Enter the pyramid's base length: ");
+                            a = Shape.parser(scan.nextLine());
+                            if (a == -1) break;
+                            System.out.print("Enter the pyramid's base width: ");
+                            b = Shape.parser(scan.nextLine());
+                            if (b == -1) break;
+                            System.out.print("Enter the pyramid's height: ");
+                            h = Shape.parser(scan.nextLine());
+                            if (h == -1) break;
+                            pm = new Pyramid(a, b, h);
+                            System.out.println("Area: " + pm.S() + "\nVolume: " + pm.V());
+                            break;
+                        default:
+                            break;
+                    }
                     break;
                 case "7":
                     System.out.print("Enter the sphere's value: ");
-                    a = Double.parseDouble(scan.nextLine());
+                    a = Shape.parser(scan.nextLine());
+                    if (a == -1) break;
                     Sphere sp = new Sphere(a);
                     System.out.println("Area: " + sp.S() + "\nVolume: " + sp.V());
                     break;
