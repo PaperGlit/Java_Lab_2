@@ -4,9 +4,10 @@ import java.util.Scanner;
 
 import static java.lang.Integer.parseInt;
 
+@SuppressWarnings("ClassCanBeRecord")
 public class Passenger {
-    String name;
-    int age;
+    private final String name;
+    private final int age;
 
     public Passenger(String name, int age) {
         this.name = name;
@@ -26,9 +27,17 @@ public class Passenger {
             System.out.println("Error: the value is not an integer");
             return null;
         }
+        if (k <= 0) {
+            System.out.println("Error: the value cannot be negative nor zero");
+            return null;
+        }
 
         return new Passenger(s, k);
     }
+
+    public String getName() { return name; }
+
+    public int getAge() { return age; }
 
     public void print(int count) {
         System.out.println("#" + count + " " + this.name + " (" + this.age + ")");

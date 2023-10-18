@@ -33,12 +33,13 @@ public class Task3 {
                         case "2":
                             count = 0;
                             for(Airport airport : airports) {
-                                airport.print(count);
+                                airport.print(null, count);
                                 count++;
                             }
                             System.out.println("Enter the ID of an Airport to edit: ");
-                            if (isViable(airports.size(), scanner.nextLine())) {
-                                k = parseInt(scanner.nextLine());
+                            s = scanner.nextLine();
+                            if (isViable(airports.size(), s)) {
+                                k = parseInt(s);
                             }
                             else break;
                             airports.set(k, Airport.create());
@@ -47,12 +48,13 @@ public class Task3 {
                         case "3":
                             count = 0;
                             for(Airport airport : airports) {
-                                airport.print(count);
+                                airport.print(null, count);
                                 count++;
                             }
                             System.out.println("Enter the ID of an Airport to delete: ");
-                            if (isViable(airports.size(), scanner.nextLine())) {
-                                k = parseInt(scanner.nextLine());
+                            s = scanner.nextLine();
+                            if (isViable(airports.size(), s)) {
+                                k = parseInt(s);
                             }
                             else break;
                             airports.remove(k);
@@ -80,8 +82,9 @@ public class Task3 {
                                 count++;
                             }
                             System.out.println("Enter the ID of a Plane to edit: ");
-                            if (isViable(planes.size(), scanner.nextLine())) {
-                                k = parseInt(scanner.nextLine());
+                            s = scanner.nextLine();
+                            if (isViable(planes.size(), s)) {
+                                k = parseInt(s);
                             }
                             else break;
                             p = Plane.create(airports);
@@ -97,8 +100,9 @@ public class Task3 {
                                 count++;
                             }
                             System.out.println("Enter the ID of a Plane to delete: ");
-                            if (isViable(planes.size(), scanner.nextLine())) {
-                                k = parseInt(scanner.nextLine());
+                            s = scanner.nextLine();
+                            if (isViable(planes.size(), s)) {
+                                k = parseInt(s);
                             }
                             else break;
                             planes.remove(k);
@@ -127,8 +131,9 @@ public class Task3 {
                                 count++;
                             }
                             System.out.println("Enter the ID of a Route to edit: ");
-                            if (isViable(routes.size(), scanner.nextLine())) {
-                                k = parseInt(scanner.nextLine());
+                            s = scanner.nextLine();
+                            if (isViable(routes.size(), s)) {
+                                k = parseInt(s);
                             }
                             else break;
                             r = Route.create(planes, airports);
@@ -144,8 +149,9 @@ public class Task3 {
                                 count++;
                             }
                             System.out.println("Enter the ID of a Route to delete: ");
-                            if (isViable(routes.size(), scanner.nextLine())) {
-                                k = parseInt(scanner.nextLine());
+                            s = scanner.nextLine();
+                            if (isViable(routes.size(), s)) {
+                                k = parseInt(s);
                             }
                             else break;
                             routes.remove(k);
@@ -174,8 +180,9 @@ public class Task3 {
                                 count++;
                             }
                             System.out.println("Enter the ID of a Passenger to edit: ");
-                            if (isViable(passengers.size(), scanner.nextLine())) {
-                                k = parseInt(scanner.nextLine());
+                            s = scanner.nextLine();
+                            if (isViable(passengers.size(), s)) {
+                                k = parseInt(s);
                             }
                             else break;
                             pg = Passenger.create();
@@ -191,8 +198,9 @@ public class Task3 {
                                 count++;
                             }
                             System.out.println("Enter the ID of a Passenger to delete: ");
-                            if (isViable(passengers.size(), scanner.nextLine())) {
-                                k = parseInt(scanner.nextLine());
+                            s = scanner.nextLine();
+                            if (isViable(passengers.size(), s)) {
+                                k = parseInt(s);
                             }
                             else break;
                             passengers.remove(k);
@@ -227,7 +235,7 @@ public class Task3 {
                 case "6":
                     Ticket tc;
                     double price;
-                    System.out.print("1 - Set a new Ticket price, 2 - Sell a Ticket, 3 - Revenue, anything else - return: ");
+                    System.out.print("1 - Set a new Ticket price, 2 - Sell a Ticket, 3 - Cancel a Ticket, 4 - Revenue, anything else - return: ");
                     s = scanner.nextLine();
                     switch (s) {
                         case "1":
@@ -254,6 +262,21 @@ public class Task3 {
                             }
                             break;
                         case "3":
+                            count = 0;
+                            for (Ticket ticket : tickets) {
+                                ticket.print(count);
+                                count++;
+                            }
+                            System.out.println("Enter the ID of a Ticket to cancel: ");
+                            s = scanner.nextLine();
+                            if (isViable(passengers.size(), s)) {
+                                k = parseInt(s);
+                            }
+                            else break;
+                            tickets.remove(k);
+                            System.out.println("A Ticket was cancelled successfully");
+                            break;
+                        case "4":
                             double revenue = 0;
                             for (Ticket ticket : tickets) {
                                 revenue += ticket.getPrice();

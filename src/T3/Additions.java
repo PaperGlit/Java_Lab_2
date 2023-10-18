@@ -20,6 +20,7 @@ public class Additions {
         return true;
     }
     public static boolean isTime(String s) {
+        int t, u;
         if (s.length() != 5) {
             System.out.println("Error: incorrect time format detected");
             return false;
@@ -29,6 +30,12 @@ public class Additions {
                 System.out.println("Error: incorrect time format detected");
                 return false;
             }
+        }
+        t = parseInt(s.substring(0, 2));
+        u = parseInt(s.substring(3));
+        if (t < 0 || t > 24 || u < 0 || u > 24 ) {
+            System.out.println("Error: incorrect time format detected");
+            return false;
         }
         return true;
     }

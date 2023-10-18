@@ -8,9 +8,9 @@ import static java.lang.Integer.parseInt;
 
 public class Ticket {
     static double p = 100;
-    double price;
-    Passenger passenger;
-    Route route;
+    private final double price;
+    private final Passenger passenger;
+    private final Route route;
 
     public Ticket(Passenger passenger, Route route) {
         this.price = p;
@@ -28,15 +28,16 @@ public class Ticket {
 
     public static Ticket sell(ArrayList<Passenger> passengers, ArrayList<Route> routes) {
         Scanner scanner = new Scanner(System.in);
-        int count = 0;
-        int j, k;
+        String s;
+        int count = 0, j, k;
         for (Passenger passenger : passengers) {
             passenger.print(count);
             count++;
         }
         System.out.print("Select the ID of the passenger for this Ticket: ");
-        if (isViable(passengers.size(), scanner.nextLine())) {
-            k = parseInt(scanner.nextLine());
+        s = scanner.nextLine();
+        if (isViable(passengers.size(), s)) {
+            k = parseInt(s);
         } else return null;
         count = 0;
         for (Route route : routes) {
@@ -44,9 +45,15 @@ public class Ticket {
             count++;
         }
         System.out.print("Select the ID of the route for this Ticket: ");
-        if (isViable(routes.size(), scanner.nextLine())) {
-            j = parseInt(scanner.nextLine());
+        s = scanner.nextLine();
+        if (isViable(routes.size(), s)) {
+            j = parseInt(s);
         } else return null;
         return new Ticket(passengers.get(k), routes.get(j));
+    }
+
+    public void print(int count) {
+        System.out.println("#" + count + " (" + this.passenger.getName() + ", " + this.passenger.getAge() +
+                ") - (" + this.route.getPlane().getLocation() + this.route.getDestination().getLocation() + ") (" + this.price + ")");
     }
 }
