@@ -29,7 +29,7 @@ public class Route {
             plane.print(count);
             count++;
         }
-        System.out.print("Select the ID of the plane for this route: ");
+        System.out.print("Select the ID of the plane for this new route: ");
         u = scanner.nextLine();
         if (isViable(planes.size(), u)) {
             k = parseInt(u);
@@ -39,7 +39,7 @@ public class Route {
             airport.print(planes.get(k).getAirport().getName(), count);
             count++;
         }
-        System.out.print("Select the ID of the airport for the destination of this route: ");
+        System.out.print("Select the ID of the airport for the destination of this new route: ");
         u = scanner.nextLine();
         if (isViable(airports.size(), u)) {
             j = parseInt(u);
@@ -48,10 +48,10 @@ public class Route {
             System.out.println("Error: value is out-of-reach");
             return null;
         }
-        System.out.print("Select the time of departure for this route (HH:MM 24-hour format): ");
+        System.out.print("Select the time of departure for this new route (HH:MM 24-hour format): ");
         s = scanner.nextLine();
         if (!isTime(s)) return null;
-        System.out.print("Select the time of arrival for this route (HH:MM 24-hour format): ");
+        System.out.print("Select the time of arrival for this new route (HH:MM 24-hour format): ");
         t = scanner.nextLine();
         if (!isTime(t)) return null;
         return new Route(planes.get(k), airports.get(j), s, t);
@@ -74,7 +74,7 @@ public class Route {
             count++;
         }
         while (true) {
-            System.out.print("Select the ID of the plane for this route: ");
+            System.out.print("Select the ID of the new plane for this route: ");
             u = scanner.nextLine();
             if (isViable(planes.size(), u)) {
                 k = parseInt(u);
@@ -88,7 +88,7 @@ public class Route {
             count++;
         }
         while (true) {
-            System.out.print("Select the ID of the airport for the destination of this route: ");
+            System.out.print("Select the ID of the new airport for the destination of this route: ");
             u = scanner.nextLine();
             if (isViable(airports.size(), u)) {
                 j = parseInt(u);
@@ -100,10 +100,10 @@ public class Route {
             break;
         }
         while (true) {
-            System.out.print("Select the time of departure for this route (HH:MM 24-hour format): ");
+            System.out.print("Select the new time of departure for this route (HH:MM 24-hour format): ");
             s = scanner.nextLine();
             if (!isTime(s)) continue;
-            System.out.print("Select the time of arrival for this route (HH:MM 24-hour format): ");
+            System.out.print("Select the new time of arrival for this route (HH:MM 24-hour format): ");
             t = scanner.nextLine();
             if (!isTime(t)) continue;
             this.timeD = s;

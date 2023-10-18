@@ -38,7 +38,7 @@ public class Ticket {
             passenger.print(count);
             count++;
         }
-        System.out.print("Select the ID of the passenger for this Ticket: ");
+        System.out.print("Select the ID of the passenger for this new Ticket: ");
         s = scanner.nextLine();
         if (isViable(passengers.size(), s)) {
             k = parseInt(s);
@@ -48,7 +48,7 @@ public class Ticket {
             route.print(count);
             count++;
         }
-        System.out.print("Select the ID of the route for this Ticket: ");
+        System.out.print("Select the ID of the route for this new Ticket: ");
         s = scanner.nextLine();
         if (isViable(routes.size(), s)) {
             j = parseInt(s);

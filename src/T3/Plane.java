@@ -41,7 +41,7 @@ public class Plane {
     public void edit(ArrayList<Airport> airports) {
         Scanner scanner = new Scanner(System.in);
         String t;
-        System.out.print("Enter the name of a new Plane: ");
+        System.out.print("Enter the new name of a Plane: ");
         this.name = scanner.nextLine();
         int count = 0, k;
         for (Airport airport : airports) {
@@ -49,7 +49,7 @@ public class Plane {
             count++;
         }
         while (true) {
-            System.out.print("Enter the ID of the location of a new Plane: ");
+            System.out.print("Enter the ID of the new location of a Plane: ");
             t = scanner.nextLine();
             if (isViable(airports.size(), t)) {
                 k = parseInt(t);

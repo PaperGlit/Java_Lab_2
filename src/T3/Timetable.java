@@ -23,7 +23,7 @@ public class Timetable {
             route.print(count);
             count++;
         }
-        System.out.print("Select the ID of the route for this Timetable: ");
+        System.out.print("Select the ID of the route for this new Timetable: ");
         t = scanner.nextLine();
         if (isViable(routes.size(), t)) {
             k = parseInt(t);

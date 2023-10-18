@@ -17,9 +17,9 @@ public class Passenger {
         Scanner scanner = new Scanner(System.in);
         int k;
         String s;
-        System.out.print("Enter the name of a Passenger: ");
+        System.out.print("Enter the name of a new Passenger: ");
         s = scanner.nextLine();
-        System.out.print("Enter the age of a Passenger: ");
+        System.out.print("Enter the age of a new Passenger: ");
         try {
             k = parseInt(scanner.nextLine());
         } catch (Exception e) {
@@ -41,10 +41,10 @@ public class Passenger {
     public void edit() {
         Scanner scanner = new Scanner(System.in);
         int k;
-        System.out.print("Enter the name of a Passenger: ");
+        System.out.print("Enter the new name of a Passenger: ");
         this.name = scanner.nextLine();
         while (true) {
-            System.out.print("Enter the age of a Passenger: ");
+            System.out.print("Enter the new age of a Passenger: ");
             try {
                 k = parseInt(scanner.nextLine());
             } catch (Exception e) {

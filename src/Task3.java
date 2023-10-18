@@ -37,7 +37,7 @@ public class Task3 {
                                 airport.print(null, count);
                                 count++;
                             }
-                            System.out.println("Enter the ID of an Airport to edit: ");
+                            System.out.print("Enter the ID of an Airport to edit: ");
                             s = scanner.nextLine();
                             if (isViable(airports.size(), s)) {
                                 k = parseInt(s);
@@ -53,7 +53,7 @@ public class Task3 {
                                 airport.print(null, count);
                                 count++;
                             }
-                            System.out.println("Enter the ID of an Airport to delete: ");
+                            System.out.print("Enter the ID of an Airport to delete: ");
                             s = scanner.nextLine();
                             if (isViable(airports.size(), s)) {
                                 k = parseInt(s);
@@ -92,7 +92,7 @@ public class Task3 {
                                 plane.print(count);
                                 count++;
                             }
-                            System.out.println("Enter the ID of a Plane to edit: ");
+                            System.out.print("Enter the ID of a Plane to edit: ");
                             s = scanner.nextLine();
                             if (isViable(planes.size(), s)) {
                                 k = parseInt(s);
@@ -108,7 +108,7 @@ public class Task3 {
                                 plane.print(count);
                                 count++;
                             }
-                            System.out.println("Enter the ID of a Plane to delete: ");
+                            System.out.print("Enter the ID of a Plane to delete: ");
                             s = scanner.nextLine();
                             if (isViable(planes.size(), s)) {
                                 k = parseInt(s);
@@ -143,7 +143,7 @@ public class Task3 {
                                 route.print(count);
                                 count++;
                             }
-                            System.out.println("Enter the ID of a Route to edit: ");
+                            System.out.print("Enter the ID of a Route to edit: ");
                             s = scanner.nextLine();
                             if (isViable(routes.size(), s)) {
                                 k = parseInt(s);
@@ -159,7 +159,7 @@ public class Task3 {
                                 route.print(count);
                                 count++;
                             }
-                            System.out.println("Enter the ID of a Route to delete: ");
+                            System.out.print("Enter the ID of a Route to delete: ");
                             s = scanner.nextLine();
                             if (isViable(routes.size(), s)) {
                                 k = parseInt(s);
@@ -193,7 +193,7 @@ public class Task3 {
                                 passenger.print(count);
                                 count++;
                             }
-                            System.out.println("Enter the ID of a Passenger to edit: ");
+                            System.out.print("Enter the ID of a Passenger to edit: ");
                             s = scanner.nextLine();
                             if (isViable(passengers.size(), s)) {
                                 k = parseInt(s);
@@ -209,7 +209,7 @@ public class Task3 {
                                 passenger.print(count);
                                 count++;
                             }
-                            System.out.println("Enter the ID of a Passenger to delete: ");
+                            System.out.print("Enter the ID of a Passenger to delete: ");
                             s = scanner.nextLine();
                             if (isViable(passengers.size(), s)) {
                                 k = parseInt(s);
@@ -280,7 +280,7 @@ public class Task3 {
                                 ticket.print(count);
                                 count++;
                             }
-                            System.out.println("Enter the ID of a Ticket to cancel: ");
+                            System.out.print("Enter the ID of a Ticket to cancel: ");
                             s = scanner.nextLine();
                             if (isViable(passengers.size(), s)) {
                                 k = parseInt(s);
