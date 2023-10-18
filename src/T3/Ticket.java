@@ -18,7 +18,11 @@ public class Ticket {
         this.route = route;
     }
 
-    public double getPrice() { return this.price; }
+    public double getPrice() { return price; }
+
+    public Route getRoute() { return route; }
+
+    public Passenger getPassenger() { return  passenger; }
 
     public static double getSetPrice() { return p; }
 
@@ -54,6 +58,6 @@ public class Ticket {
 
     public void print(int count) {
         System.out.println("#" + count + " (" + this.passenger.getName() + ", " + this.passenger.getAge() +
-                ") - (" + this.route.getPlane().getLocation() + this.route.getDestination().getLocation() + ") (" + this.price + ")");
+                ") - (" + this.route.getPlane().getAirport() + this.route.getDestination().getLocation() + ") (" + this.price + ")");
     }
 }

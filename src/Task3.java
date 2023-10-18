@@ -25,6 +25,7 @@ public class Task3 {
                 case "1":
                     System.out.print("1 - Create a new Airport, 2 - Edit an Airport, 3 - Delete an Airport, anything else - return: ");
                     s = scanner.nextLine();
+                    Airport ap;
                     switch (s) {
                         case "1":
                             airports.add(Airport.create());
@@ -42,7 +43,8 @@ public class Task3 {
                                 k = parseInt(s);
                             }
                             else break;
-                            airports.set(k, Airport.create());
+                            ap = airports.get(k);
+                            ap.edit();
                             System.out.println("An Airport was edited successfully");
                             break;
                         case "3":
@@ -57,6 +59,15 @@ public class Task3 {
                                 k = parseInt(s);
                             }
                             else break;
+                            ap = airports.get(k);
+                            timetables.removeIf(timetable ->
+                                    timetable.getRoute().getPlane().getAirport() == ap
+                                    || timetable.getRoute().getDestination() == ap);
+                            tickets.removeIf(ticket -> ticket.getRoute().getPlane().getAirport() == ap
+                                    || ticket.getRoute().getDestination() == ap);
+                            routes.removeIf(route -> route.getPlane().getAirport() == ap
+                                    || route.getDestination() == ap);
+                            planes.removeIf(plane -> plane.getAirport() == ap);
                             airports.remove(k);
                             System.out.println("An Airport was deleted successfully");
                         default:
@@ -87,11 +98,9 @@ public class Task3 {
                                 k = parseInt(s);
                             }
                             else break;
-                            p = Plane.create(airports);
-                            if (p != null) {
-                                planes.set(k, p);
-                                System.out.println("A Plane was edited successfully");
-                            }
+                            p = planes.get(k);
+                            p.edit(airports);
+                            System.out.println("A Plane was edited successfully");
                             break;
                         case "3":
                             count = 0;
@@ -105,6 +114,10 @@ public class Task3 {
                                 k = parseInt(s);
                             }
                             else break;
+                            Plane plane = planes.get(k);
+                            timetables.removeIf(timetable -> timetable.getRoute().getPlane() == plane);
+                            tickets.removeIf(ticket -> ticket.getRoute().getPlane() == plane);
+                            routes.removeIf(route -> route.getPlane() == plane);
                             planes.remove(k);
                             System.out.println("A Plane was deleted successfully");
                             break;
@@ -136,11 +149,9 @@ public class Task3 {
                                 k = parseInt(s);
                             }
                             else break;
-                            r = Route.create(planes, airports);
-                            if (r != null) {
-                                routes.set(k, r);
-                                System.out.println("A Route was edited successfully");
-                            }
+                            r = routes.get(k);
+                            r.edit(planes, airports);
+                            System.out.println("A Route was edited successfully");
                             break;
                         case "3":
                             count = 0;
@@ -154,6 +165,9 @@ public class Task3 {
                                 k = parseInt(s);
                             }
                             else break;
+                            Route route = routes.get(k);
+                            timetables.removeIf(timetable -> timetable.getRoute() == route);
+                            tickets.removeIf(ticket -> ticket.getRoute() == route);
                             routes.remove(k);
                             System.out.println("A Route was deleted successfully");
                             break;
@@ -185,11 +199,9 @@ public class Task3 {
                                 k = parseInt(s);
                             }
                             else break;
-                            pg = Passenger.create();
-                            if (pg != null) {
-                                passengers.set(k, pg);
-                                System.out.println("Passenger was edited successfully");
-                            }
+                            pg = passengers.get(k);
+                            pg.edit();
+                            System.out.println("Passenger was edited successfully");
                             break;
                         case "3":
                             count = 0;
@@ -203,6 +215,7 @@ public class Task3 {
                                 k = parseInt(s);
                             }
                             else break;
+                            tickets.removeIf(ticket -> ticket.getPassenger() == passengers.get(k));
                             passengers.remove(k);
                             break;
                         default:

@@ -33,8 +33,10 @@ public class Timetable {
         return new Timetable(routes.get(k), s);
     }
 
+    public Route getRoute() { return route; }
+
     public void print(int count) {
         System.out.println("#" + count + " (" + this.route.getTimeD() + " - " + this.route.getTimeA() + " " + this.schedule + ") "
-                + this.route.getPlane().getLocation().getLocation() + " - " + this.route.getDestination().getLocation());
+                + this.route.getPlane().getAirport().getLocation() + " - " + this.route.getDestination().getLocation());
     }
 }

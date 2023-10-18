@@ -6,14 +6,13 @@ import java.util.Scanner;
 import static T3.Additions.isViable;
 import static java.lang.Integer.parseInt;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Plane {
-    private final String name;
-    private final Airport location;
+    private String name;
+    private Airport airport;
 
-    public Plane(String name, Airport location) {
+    public Plane(String name, Airport airport) {
         this.name = name;
-        this.location = location;
+        this.airport = airport;
     }
 
     public static Plane create(ArrayList<Airport> airports) {
@@ -37,9 +36,30 @@ public class Plane {
 
     public String getName() { return name; }
 
-    public Airport getLocation() { return location; }
+    public Airport getAirport() { return airport; }
+
+    public void edit(ArrayList<Airport> airports) {
+        Scanner scanner = new Scanner(System.in);
+        String t;
+        System.out.print("Enter the name of a new Plane: ");
+        this.name = scanner.nextLine();
+        int count = 0, k;
+        for (Airport airport : airports) {
+            airport.print(null, count);
+            count++;
+        }
+        while (true) {
+            System.out.print("Enter the ID of the location of a new Plane: ");
+            t = scanner.nextLine();
+            if (isViable(airports.size(), t)) {
+                k = parseInt(t);
+                this.airport = airports.get(k);
+                return;
+            }
+        }
+    }
 
     public void print(int count) {
-        System.out.println("#" + count + " " + this.name + " (" + this.location.getName() + "(" + this.location.getLocation() + "))");
+        System.out.println("#" + count + " " + this.name + " (" + this.airport.getName() + "(" + this.airport.getLocation() + "))");
     }
 }

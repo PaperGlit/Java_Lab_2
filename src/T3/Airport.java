@@ -2,10 +2,9 @@ package T3;
 
 import java.util.Scanner;
 
-@SuppressWarnings("ClassCanBeRecord")
 public class Airport {
-    private final String name;
-    private final String location;
+    private String name;
+    private String location;
 
     public Airport(String name, String location) {
         this.name = name;
@@ -24,6 +23,14 @@ public class Airport {
     public String getName() { return name; }
 
     public String getLocation() { return location; }
+
+    public void edit() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the name of an Airport: ");
+        this.name = scanner.nextLine();
+        System.out.print("Enter the location of an Airport: ");
+        this.location = scanner.nextLine();
+    }
 
     public void print(String name, int count) {
         if (!(this.name.equals(name))) {
