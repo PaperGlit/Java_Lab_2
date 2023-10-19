@@ -39,4 +39,54 @@ public class Additions {
         }
         return true;
     }
+
+    private static boolean isFirstLetterOfDay(char c) {
+        return (c == 'M' || c == 'T' || c == 'W' || c == 'F' || c == 'S');
+    }
+
+    private static boolean isLastLetterOfDay(char c) {
+        return (c == 'n' || c == 'e' || c == 'd' || c == 'u' || c == 'i' || c == 't');
+    }
+
+    //Viable formats: (DDD-DDD; DDD - DDD; DDD, DDD, DDD, ..., DDD; DDD,DDD,DDD,...,DDD)
+    public static boolean isDate(String s) {
+        char c, cm1, cp1;
+        int ip3;
+        boolean alreadyHasDash = false, isCorrectDay = false;
+        StringBuilder sb = new StringBuilder();
+        String[] dates = {"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+        for (int i = 0; i < s.length(); i++) {
+            c = s.charAt(i);
+            if (i == 0) cm1 = 0;
+            else cm1 = s.charAt(i - 1);
+            if (i == s.length() - 1) cp1 = 0;
+            else cp1 = s.charAt(i + 1);
+            if (c == '-') {
+                if (alreadyHasDash) return false;
+                else alreadyHasDash = true;
+            } else if (c == ',' && alreadyHasDash) return false;
+            if (c == '-' && !((isLastLetterOfDay(cm1) || cm1 == ' ')
+                    && (isFirstLetterOfDay(cp1) || cp1 == ' '))) {
+                return false;
+            } else if (c == ',' && !(isLastLetterOfDay(cm1)
+                    && (isLastLetterOfDay(cp1) || cp1 == ' '))) {
+                return false;
+            }
+            if (isFirstLetterOfDay(c)) {
+                ip3 = i + 3;
+                while (i < ip3) {
+                    sb.append(s.charAt(i));
+                    i++;
+                }
+                for (String date : dates) {
+                    if (sb.toString().equals(date)) {
+                        isCorrectDay = true;
+                        break;
+                    }
+                }
+                if (!isCorrectDay) return false;
+            }
+        }
+        return true;
+    }
 }

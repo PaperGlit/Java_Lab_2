@@ -60,6 +60,6 @@ public class Plane {
     }
 
     public void print(int count) {
-        System.out.println("#" + count + " " + this.name + " (" + this.airport.getName() + "(" + this.airport.getLocation() + "))");
+        System.out.println("#" + count + " " + this.name + " (" + this.airport.getName() + " (" + this.airport.getLocation() + "))");
     }
 }
