@@ -22,7 +22,7 @@ public class Plane {
         int count = 0;
         int k;
         for (Airport airport : airports) {
-            airport.print(null, count);
+            System.out.println("#" + count + " " + airport);
             count++;
         }
         System.out.print("Enter the ID of the location of a new Plane: ");
@@ -45,7 +45,7 @@ public class Plane {
         this.name = scanner.nextLine();
         int count = 0, k;
         for (Airport airport : airports) {
-            airport.print(null, count);
+            System.out.println("#" + count + " " + airport);
             count++;
         }
         while (true) {
@@ -59,7 +59,7 @@ public class Plane {
         }
     }
 
-    public void print(int count) {
-        System.out.println("#" + count + " " + this.name + " (" + this.airport.getName() + " (" + this.airport.getLocation() + "))");
+    public String toString() {
+        return this.name + " (" + this.airport + ")";
     }
 }

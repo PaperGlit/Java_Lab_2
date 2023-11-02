@@ -34,10 +34,6 @@ public class Passenger {
         return new Passenger(s, k);
     }
 
-    public String getName() { return name; }
-
-    public int getAge() { return age; }
-
     public void edit() {
         Scanner scanner = new Scanner(System.in);
         int k;
@@ -60,7 +56,7 @@ public class Passenger {
         }
     }
 
-    public void print(int count) {
-        System.out.println("#" + count + " " + this.name + " (" + this.age + ")");
+    public String toString(){
+        return this.name + " (" + this.age + ")";
     }
 }

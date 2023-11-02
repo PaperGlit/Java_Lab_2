@@ -26,7 +26,7 @@ public class Route {
         int j, k;
         String s, t, u;
         for (Plane plane : planes) {
-            plane.print(count);
+            System.out.println("#" + count + " " + plane);
             count++;
         }
         System.out.print("Select the ID of the plane for this new route: ");
@@ -36,7 +36,9 @@ public class Route {
         } else return null;
         count = 0;
         for (Airport airport : airports) {
-            airport.print(planes.get(k).getAirport().getName(), count);
+            if (planes.get(k).getAirport() != airport) {
+                System.out.println("#" + count + " " + airport);
+            }
             count++;
         }
         System.out.print("Select the ID of the airport for the destination of this new route: ");
@@ -61,16 +63,12 @@ public class Route {
 
     public Airport getDestination() { return destination; }
 
-    public String getTimeD() { return timeD; }
-
-    public String getTimeA() { return timeA; }
-
     public void edit(ArrayList<Plane> planes, ArrayList<Airport> airports) {
         Scanner scanner = new Scanner(System.in);
         int count = 0, j, k;
         String s, t, u;
         for (Plane plane : planes) {
-            plane.print(count);
+            System.out.println("#" + count + " " + plane);
             count++;
         }
         while (true) {
@@ -84,7 +82,9 @@ public class Route {
         }
         count = 0;
         for (Airport airport : airports) {
-            airport.print(planes.get(k).getAirport().getName(), count);
+            if (planes.get(k).getAirport() != airport) {
+                System.out.println("#" + count + " " + airport);
+            }
             count++;
         }
         while (true) {
@@ -95,7 +95,8 @@ public class Route {
             } else continue;
             if (airports.get(j) == planes.get(k).getAirport()) {
                 System.out.println("Error: value is out-of-reach");
-            } else continue;
+                continue;
+            }
             this.destination = airports.get(j);
             break;
         }
@@ -112,9 +113,8 @@ public class Route {
         }
     }
 
-    public void print(int count) {
-        System.out.println("#" + count + " " + this.timeD + " - " + this.timeA + " " +
-                this.plane.getAirport().getLocation() + " - " + this.destination.getLocation() +
-                " (" + this.plane.getName() + ")");
+    public String toString() {
+        return this.timeD + " - " + this.timeA + " " + this.plane.getAirport().getLocation() +
+                " - " + this.destination.getLocation() + " (" + this.plane.getName() + ")";
     }
 }

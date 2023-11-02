@@ -21,7 +21,7 @@ public class Timetable {
         int count = 0, k;
         String s, t;
         for (Route route : routes) {
-            route.print(count);
+            System.out.println("#" + count + " " + route);
             count++;
         }
         System.out.print("Select the ID of the route for this new Timetable: ");
@@ -40,9 +40,7 @@ public class Timetable {
 
     public Route getRoute() { return route; }
 
-    public void print(int count) {
-        System.out.println("#" + count + " (" + this.route.getTimeD() + " - " + this.route.getTimeA() + " " + this.schedule + ") "
-                + this.route.getPlane().getAirport().getLocation() + " - " + this.route.getDestination().getLocation()
-                + " (" + this.route.getPlane().getName() + ")");
+    public String toString() {
+        return this.schedule + " " + this.route;
     }
 }

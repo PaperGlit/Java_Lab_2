@@ -20,8 +20,6 @@ public class Airport {
         return new Airport(s, t);
     }
 
-    public String getName() { return name; }
-
     public String getLocation() { return location; }
 
     public void edit() {
@@ -32,9 +30,7 @@ public class Airport {
         this.location = scanner.nextLine();
     }
 
-    public void print(String name, int count) {
-        if (!(this.name.equals(name))) {
-            System.out.println("#" + count + " " + this.name + " (" + this.location + ")");
-        }
+    public String toString() {
+        return this.name + " (" + this.location + ")";
     }
 }

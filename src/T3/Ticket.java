@@ -35,7 +35,7 @@ public class Ticket {
         String s;
         int count = 0, j, k;
         for (Passenger passenger : passengers) {
-            passenger.print(count);
+            System.out.println("#" + count + " " + passenger);
             count++;
         }
         System.out.print("Select the ID of the passenger for this new Ticket: ");
@@ -45,7 +45,7 @@ public class Ticket {
         } else return null;
         count = 0;
         for (Route route : routes) {
-            route.print(count);
+            System.out.println("#" + count + " " + route);
             count++;
         }
         System.out.print("Select the ID of the route for this new Ticket: ");
@@ -55,9 +55,7 @@ public class Ticket {
         } else return null;
         return new Ticket(passengers.get(k), routes.get(j));
     }
-
-    public void print(int count) {
-        System.out.println("#" + count + " (" + this.passenger.getName() + ", " + this.passenger.getAge() +
-                ") - (" + this.route.getPlane().getAirport() + this.route.getDestination().getLocation() + ") (" + this.price + ")");
+    public String toString() {
+        return this.passenger + " - " + this.route + " (" + this.price + ")";
     }
 }

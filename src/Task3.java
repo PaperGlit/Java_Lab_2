@@ -23,7 +23,7 @@ public class Task3 {
             int k, count;
             switch (s) {
                 case "1":
-                    System.out.print("1 - Create a new Airport, 2 - Edit an Airport, 3 - Delete an Airport, anything else - return: ");
+                    System.out.print("1 - Create a new Airport, 2 - Edit an Airport, 3 - Delete an Airport, 4 - Print Airports, anything else - return: ");
                     s = scanner.nextLine();
                     Airport ap;
                     switch (s) {
@@ -34,7 +34,7 @@ public class Task3 {
                         case "2":
                             count = 0;
                             for(Airport airport : airports) {
-                                airport.print(null, count);
+                                System.out.println("#" + count + " " + airport);
                                 count++;
                             }
                             System.out.print("Enter the ID of an Airport to edit: ");
@@ -50,7 +50,7 @@ public class Task3 {
                         case "3":
                             count = 0;
                             for(Airport airport : airports) {
-                                airport.print(null, count);
+                                System.out.println("#" + count + " " + airport);
                                 count++;
                             }
                             System.out.print("Enter the ID of an Airport to delete: ");
@@ -70,13 +70,19 @@ public class Task3 {
                             planes.removeIf(plane -> plane.getAirport() == ap);
                             airports.remove(k);
                             System.out.println("An Airport was deleted successfully");
+                        case "4":
+                            count = 0;
+                            for(Airport airport : airports) {
+                                System.out.println("#" + count + " " + airport);
+                                count++;
+                            }
                         default:
                             break;
                     }
                     break;
                 case "2":
                     Plane p;
-                    System.out.print("1 - Create a new Plane, 2 - Edit a Plane, 3 - Delete a Plane, anything else - return: ");
+                    System.out.print("1 - Create a new Plane, 2 - Edit a Plane, 3 - Delete a Plane, 4 - Print Planes, anything else - return: ");
                     s = scanner.nextLine();
                     switch (s) {
                         case "1":
@@ -89,7 +95,7 @@ public class Task3 {
                         case "2":
                             count = 0;
                             for (Plane plane : planes) {
-                                plane.print(count);
+                                System.out.println("#" + count + " " + plane);
                                 count++;
                             }
                             System.out.print("Enter the ID of a Plane to edit: ");
@@ -105,7 +111,7 @@ public class Task3 {
                         case "3":
                             count = 0;
                             for (Plane plane : planes) {
-                                plane.print(count);
+                                System.out.println("#" + count + " " + plane);
                                 count++;
                             }
                             System.out.print("Enter the ID of a Plane to delete: ");
@@ -114,20 +120,26 @@ public class Task3 {
                                 k = parseInt(s);
                             }
                             else break;
-                            Plane plane = planes.get(k);
-                            timetables.removeIf(timetable -> timetable.getRoute().getPlane() == plane);
-                            tickets.removeIf(ticket -> ticket.getRoute().getPlane() == plane);
-                            routes.removeIf(route -> route.getPlane() == plane);
+                            Plane plane1 = planes.get(k);
+                            timetables.removeIf(timetable -> timetable.getRoute().getPlane() == plane1);
+                            tickets.removeIf(ticket -> ticket.getRoute().getPlane() == plane1);
+                            routes.removeIf(route -> route.getPlane() == plane1);
                             planes.remove(k);
                             System.out.println("A Plane was deleted successfully");
                             break;
+                        case "4":
+                            count = 0;
+                            for (Plane plane : planes) {
+                                System.out.println("#" + count + " " + plane);
+                                count++;
+                            }
                         default:
                             break;
                     }
                     break;
                 case "3":
                     Route r;
-                    System.out.print("1 - Create a new Route, 2 - Edit a Route, 3 - Delete a Route, anything else - return: ");
+                    System.out.print("1 - Create a new Route, 2 - Edit a Route, 3 - Delete a Route, 4 - Print Routes, anything else - return: ");
                     s = scanner.nextLine();
                     switch (s) {
                         case "1":
@@ -140,7 +152,7 @@ public class Task3 {
                         case "2":
                             count = 0;
                             for (Route route : routes) {
-                                route.print(count);
+                                System.out.println("#" + count + " " + route);
                                 count++;
                             }
                             System.out.print("Enter the ID of a Route to edit: ");
@@ -156,7 +168,7 @@ public class Task3 {
                         case "3":
                             count = 0;
                             for (Route route : routes) {
-                                route.print(count);
+                                System.out.println("#" + count + " " + route);
                                 count++;
                             }
                             System.out.print("Enter the ID of a Route to delete: ");
@@ -165,19 +177,25 @@ public class Task3 {
                                 k = parseInt(s);
                             }
                             else break;
-                            Route route = routes.get(k);
-                            timetables.removeIf(timetable -> timetable.getRoute() == route);
-                            tickets.removeIf(ticket -> ticket.getRoute() == route);
+                            Route route1 = routes.get(k);
+                            timetables.removeIf(timetable -> timetable.getRoute() == route1);
+                            tickets.removeIf(ticket -> ticket.getRoute() == route1);
                             routes.remove(k);
                             System.out.println("A Route was deleted successfully");
                             break;
+                        case "4":
+                            count = 0;
+                            for (Route route : routes) {
+                                System.out.println("#" + count + " " + route);
+                                count++;
+                            }
                         default:
                             break;
                     }
                     break;
                 case "4":
                     Passenger pg;
-                    System.out.print("1 - Create a new Passenger, 2 - Edit a Passenger, 3 - Delete a Passenger, anything else - return: ");
+                    System.out.print("1 - Create a new Passenger, 2 - Edit a Passenger, 3 - Delete a Passenger, 4 - Print Passengers, anything else - return: ");
                     s = scanner.nextLine();
                     switch (s) {
                         case "1":
@@ -190,7 +208,7 @@ public class Task3 {
                         case "2":
                             count = 0;
                             for (Passenger passenger : passengers) {
-                                passenger.print(count);
+                                System.out.println("#" + count + " " + passenger);
                                 count++;
                             }
                             System.out.print("Enter the ID of a Passenger to edit: ");
@@ -206,7 +224,7 @@ public class Task3 {
                         case "3":
                             count = 0;
                             for (Passenger passenger : passengers) {
-                                passenger.print(count);
+                                System.out.println("#" + count + " " + passenger);
                                 count++;
                             }
                             System.out.print("Enter the ID of a Passenger to delete: ");
@@ -217,14 +235,21 @@ public class Task3 {
                             else break;
                             tickets.removeIf(ticket -> ticket.getPassenger() == passengers.get(k));
                             passengers.remove(k);
+                            System.out.println("A Passenger was deleted successfully");
                             break;
+                        case "4":
+                            count = 0;
+                            for (Passenger passenger : passengers) {
+                                System.out.println("#" + count + " " + passenger);
+                                count++;
+                            }
                         default:
                             break;
                     }
                     break;
                 case "5":
                     Timetable tt;
-                    System.out.print("1 - Create a new timetable, 2 - Print a timetable, anything else - return: ");
+                    System.out.print("1 - Create a new Timetable, 2 - Print a Timetable, anything else - return: ");
                     s = scanner.nextLine();
                     switch (s) {
                         case "1":
@@ -237,7 +262,7 @@ public class Task3 {
                         case "2":
                             count = 0;
                             for (Timetable timetable : timetables) {
-                                timetable.print(count);
+                                System.out.println("#" + count + " " + timetable);
                                 count++;
                             }
                             break;
@@ -248,7 +273,7 @@ public class Task3 {
                 case "6":
                     Ticket tc;
                     double price;
-                    System.out.print("1 - Set a new Ticket price, 2 - Sell a Ticket, 3 - Cancel a Ticket, 4 - Revenue, anything else - return: ");
+                    System.out.print("1 - Set a new Ticket price, 2 - Sell a Ticket, 3 - Cancel a Ticket, 4 - Revenue, 5 - Print Tickets, anything else - return: ");
                     s = scanner.nextLine();
                     switch (s) {
                         case "1":
@@ -277,7 +302,7 @@ public class Task3 {
                         case "3":
                             count = 0;
                             for (Ticket ticket : tickets) {
-                                ticket.print(count);
+                                System.out.println("#" + count + " " + ticket);
                                 count++;
                             }
                             System.out.print("Enter the ID of a Ticket to cancel: ");
@@ -295,6 +320,12 @@ public class Task3 {
                                 revenue += ticket.getPrice();
                             }
                             System.out.println("Current revenue: " + revenue);
+                        case "5":
+                            count = 0;
+                            for (Ticket ticket : tickets) {
+                                System.out.println("#" + count + " " + ticket);
+                                count++;
+                            }
                         default:
                             break;
                     }
