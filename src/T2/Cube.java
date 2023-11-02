@@ -1,6 +1,6 @@
 package T2;
 
-public class Cube implements VShape {
+public class Cube implements IVShape {
     double a;
 
     public Cube(double a) {

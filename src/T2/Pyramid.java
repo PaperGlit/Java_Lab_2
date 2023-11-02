@@ -1,6 +1,6 @@
 package T2;
 
-public class Pyramid implements VShape {
+public class Pyramid implements IVShape {
     double a, b, c, h;
 
     public Pyramid(double a, double b, double c, double h) {

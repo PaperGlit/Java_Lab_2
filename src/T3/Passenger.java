@@ -6,6 +6,7 @@ import static java.lang.Integer.parseInt;
 
 public class Passenger {
     private String name;
+
     private int age;
 
     public Passenger(String name, int age) {

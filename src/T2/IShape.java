@@ -2,11 +2,12 @@ package T2;
 
 import static java.lang.Double.parseDouble;
 
-public interface Shape {
+public interface IShape {
     @SuppressWarnings("unused")
     default double S() {
         return 0;
     }
+
     static double parser(String s) {
         double value;
         try {

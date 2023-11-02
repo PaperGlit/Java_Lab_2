@@ -8,8 +8,11 @@ import static java.lang.Integer.parseInt;
 
 public class Ticket {
     static double p = 100;
+
     private final double price;
+
     private final Passenger passenger;
+
     private final Route route;
 
     public Ticket(Passenger passenger, Route route) {
@@ -55,6 +58,7 @@ public class Ticket {
         } else return null;
         return new Ticket(passengers.get(k), routes.get(j));
     }
+
     public String toString() {
         return this.passenger + " - " + this.route + " (" + this.price + ")";
     }

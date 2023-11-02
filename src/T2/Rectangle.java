@@ -1,6 +1,6 @@
 package T2;
 
-public class Rectangle implements Shape {
+public class Rectangle implements IShape {
     double a, b;
 
     public Rectangle(double a, double b) {

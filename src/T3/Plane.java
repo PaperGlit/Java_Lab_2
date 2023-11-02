@@ -8,12 +8,17 @@ import static java.lang.Integer.parseInt;
 
 public class Plane {
     private String name;
+
     private Airport airport;
 
     public Plane(String name, Airport airport) {
         this.name = name;
         this.airport = airport;
     }
+
+    public String getName() { return name; }
+
+    public Airport getAirport() { return airport; }
 
     public static Plane create(ArrayList<Airport> airports) {
         Scanner scanner = new Scanner(System.in);
@@ -33,10 +38,6 @@ public class Plane {
         else return null;
         return new Plane(s, airports.get(k));
     }
-
-    public String getName() { return name; }
-
-    public Airport getAirport() { return airport; }
 
     public void edit(ArrayList<Airport> airports) {
         Scanner scanner = new Scanner(System.in);

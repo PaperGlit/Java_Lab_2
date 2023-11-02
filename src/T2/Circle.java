@@ -1,6 +1,6 @@
 package T2;
 
-public class Circle implements Shape {
+public class Circle implements IShape {
     double a;
 
     public Circle(double a) {

@@ -9,12 +9,15 @@ import static java.lang.Integer.parseInt;
 
 public class Timetable {
     private final Route route;
+
     private final String schedule;
 
     public Timetable(Route route, String schedule) {
         this.route = route;
         this.schedule = schedule;
     }
+
+    public Route getRoute() { return route; }
 
     public static Timetable create(ArrayList<Route> routes) {
         Scanner scanner = new Scanner(System.in);
@@ -37,8 +40,6 @@ public class Timetable {
         }
         return new Timetable(routes.get(k), s);
     }
-
-    public Route getRoute() { return route; }
 
     public String toString() {
         return this.schedule + " " + this.route;

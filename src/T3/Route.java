@@ -9,8 +9,11 @@ import static java.lang.Integer.parseInt;
 
 public class Route {
     private Plane plane;
+
     private Airport destination;
+
     private String timeD;
+
     private String timeA;
 
     public Route(Plane plane, Airport destination, String timeD, String timeA) {
@@ -19,6 +22,10 @@ public class Route {
         this.timeD = timeD;
         this.timeA = timeA;
     }
+
+    public Plane getPlane() { return plane; }
+
+    public Airport getDestination() { return destination; }
 
     public static Route create(ArrayList<Plane> planes, ArrayList<Airport> airports) {
         Scanner scanner = new Scanner(System.in);
@@ -58,10 +65,6 @@ public class Route {
         if (!isTime(t)) return null;
         return new Route(planes.get(k), airports.get(j), s, t);
     }
-
-    public Plane getPlane() { return plane; }
-
-    public Airport getDestination() { return destination; }
 
     public void edit(ArrayList<Plane> planes, ArrayList<Airport> airports) {
         Scanner scanner = new Scanner(System.in);
