@@ -1,7 +1,7 @@
 package T2;
 
 public class Circle implements IShape {
-    double a;
+    final double a;
 
     public Circle(double a) {
         this.a = a;

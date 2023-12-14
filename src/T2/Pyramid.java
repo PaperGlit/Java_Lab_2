@@ -1,7 +1,7 @@
 package T2;
 
 public class Pyramid implements IVShape {
-    double a, b, c, h;
+    final double a, b, c, h;
 
     public Pyramid(double a, double b, double c, double h) {
         this.a = a;

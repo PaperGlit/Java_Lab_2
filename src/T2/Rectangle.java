@@ -1,7 +1,7 @@
 package T2;
 
 public class Rectangle implements IShape {
-    double a, b;
+    final double a, b;
 
     public Rectangle(double a, double b) {
         this.a = a;

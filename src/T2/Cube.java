@@ -1,7 +1,7 @@
 package T2;
 
 public class Cube implements IVShape {
-    double a;
+    final double a;
 
     public Cube(double a) {
         this.a = a;

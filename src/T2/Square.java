@@ -1,7 +1,7 @@
 package T2;
 
 public class Square implements IShape {
-    double a;
+    final double a;
 
     public Square(double a) {
         this.a = a;

@@ -1,7 +1,7 @@
 package T2;
 
 public class Triangle implements IShape {
-    double a, b, c;
+    final double a, b, c;
 
     public Triangle(double a, double b, double c) {
         this.a = a;

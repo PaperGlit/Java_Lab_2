@@ -1,7 +1,7 @@
 package T2;
 
 public class Sphere implements IVShape {
-    double a;
+    final double a;
 
     public Sphere(double a) {
         this.a = a;
